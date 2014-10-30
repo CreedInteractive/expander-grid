@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial;
+}
+
+.category-title {
+	padding: 1em;
+	background: #dfdfdf;
+}
+
+.eg-clicker {
+	text-decoration: none;
+	background: #efefef;
+	color: #666;
+}
+
+.eg-expander-inner img {
+	max-width: 280px;
+}

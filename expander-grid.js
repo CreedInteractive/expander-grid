@@ -2,15 +2,15 @@
 	$.fn.expanderGrid = function(opt) {
 		var settings = $.extend({
 			// selector for "item" that will append template for expander
-			item: 'li', 
+			item: 'li',
 			// selector for element in template that responds to click to expand
-			clicker: 'a', 
+			clicker: 'a',
 			// selector for element in template that responds to click to close
-			closer: '.close', 
+			closer: '.close',
 			// class added to item when expanded
-			expandedClass: 'expanded', 
+			expandedClass: 'expanded',
 			// animation speed
-			speed: 'fast', 
+			speed: 'fast',
 			// id attribute of js template
 			template: '',
 			// function called when expander opens
@@ -67,10 +67,10 @@
 	// @see http://ejohn.org/blog/javascript-micro-templating/
 	var tplCache = {};
 	function tpl(str, data) {
-		var fn = !/\W/.test(str) ? 
-			tplCache[str] = tplCache[str] || 
+		var fn = !/\W/.test(str) ?
+			tplCache[str] = tplCache[str] ||
 				tpl($('#' + str).html()) :
-			new Function('obj', 
+			new Function('obj',
 				"var p=[],print=function(){p.push.apply(p,arguments);};" +
 				"with(obj){p.push('" +
 				str
@@ -88,7 +88,7 @@
 	//------------------------------------
 
 	function Expander($item, settings){
-		this.$item = $item;	
+		this.$item = $item;
 		this.settings = settings;
 		this.create();
 	}
@@ -107,7 +107,7 @@
 		},
 		open: function(){
 			var $expanded = $('.' + this.settings.expandedClass),
-				htSpeed = this.settings.speed, 
+				htSpeed = this.settings.speed,
 				itemTop = this.$item.offset().top,
 				winHeight = $(window).height(),
 				elemDiff = 0,
@@ -150,7 +150,7 @@
 			}
 			scrollTo -= elemDiff;
 			$('html, body').animate({scrollTop : scrollTo}, this.settings.speed);
-			
+
 			if (typeof this.settings.onOpen == 'function') {
 				this.settings.onOpen.apply(this);
 			}
@@ -160,12 +160,12 @@
 			this.$item.removeClass(this.settings.expandedClass);
 			if (speed) {
 				this.$item.animate({height: this.itemHeight}, speed);
-				this.$elem.slideUp(speed)
+				this.$elem.slideUp(speed);
 			}
 			else {
 				this.$item.css({height: this.itemHeight});
 				this.$elem.hide();
-			} 
+			}
 			if (typeof this.settings.onClose == 'function') {
 				this.settings.onClose.apply(this);
 			}
