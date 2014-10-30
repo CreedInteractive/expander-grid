@@ -111,19 +111,18 @@
 				itemTop = this.$item.offset().top,
 				winHeight = $(window).height(),
 				elemDiff = 0,
+				ex = null,
+				exTop = null,
 				scrollTo;
+
 			if ($expanded.length > 0) {
-				var ex = $expanded.data('expander'),
-					exTop = $expanded.offset().top;
-				if (elemDiff > 0) elemDiff = 0;
-				if (exTop == itemTop) {
+				ex = $expanded.data('expander');
+				exTop = $expanded.offset().top;
+				if (exTop === itemTop) {
 					htSpeed = false;
 				}
 				else if (exTop < itemTop) {
 					elemDiff = ex.elemHeight;
-				}
-				if (ex) {
-					ex.close(htSpeed);
 				}
 			}
 
@@ -136,6 +135,10 @@
 			else {
 				this.$item.css({height: '+=' + hDiff});
 				this.$elem.show();
+			}
+
+			if (ex) {
+				ex.close(htSpeed);
 			}
 
 			// scroll to show if necessary
